@@ -1,15 +1,15 @@
 #!/bin/bash
 
-# Define the webroot
-WEBROOT="public_html"
+# Absolute path to your app webroot
+WEBROOT="/home/master/apps/shewmaps/public_html"
 
-# Remove default PHP files (index.php, *.php)
-find $WEBROOT -maxdepth 1 -type f -name "*.php" -exec rm -f {} \;
+# Remove default PHP index
+rm -f $WEBROOT/index.php
 
-# Copy React build files into public_html
+# Copy React build contents
 cp -r build/* $WEBROOT/
 
-# Create .htaccess for React SPA routing
+# Add SPA routing
 cat > $WEBROOT/.htaccess <<EOL
 RewriteEngine On
 RewriteBase /
@@ -19,4 +19,4 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule . /index.html [L]
 EOL
 
-echo "React build deployed successfully to $WEBROOT."
+echo "React build deployed to $WEBROOT successfully."
