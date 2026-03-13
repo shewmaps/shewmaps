@@ -1,13 +1,16 @@
 #!/bin/bash
 
-# 1. Remove old public_html contents
-rm -rf public_html/*
+# Define the webroot
+WEBROOT="public_html"
 
-# 2. Copy the contents of build/ into public_html
-cp -r build/* public_html/
+# Remove default PHP files (index.php, *.php)
+find $WEBROOT -maxdepth 1 -type f -name "*.php" -exec rm -f {} \;
 
-# 3. Optional: ensure .htaccess exists for React SPA routing
-cat > public_html/.htaccess <<EOL
+# Copy React build files into public_html
+cp -r build/* $WEBROOT/
+
+# Create .htaccess for React SPA routing
+cat > $WEBROOT/.htaccess <<EOL
 RewriteEngine On
 RewriteBase /
 RewriteRule ^index\.html$ - [L]
@@ -16,4 +19,4 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule . /index.html [L]
 EOL
 
-echo "React build deployed to public_html successfully."
+echo "React build deployed successfully to $WEBROOT."
