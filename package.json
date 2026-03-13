@@ -2,7 +2,7 @@
   "name": "shewmaps",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://phpstack-1354477-6278540.cloudwaysapps.com/",
+  "homepage": ".",
   "dependencies": {
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.9.1",
