@@ -1,0 +1,371 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Petrona:wght@400;600;700&family=Raleway:wght@400;500;600&display=swap');
+
+:root {
+  --primary: #5B8DBE;
+  --accent: #A8D8D8;
+  --text: #0B0B0B;
+  --light-bg: #FAFAFA;
+  --border: #E8E8E8;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Raleway', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: var(--text);
+  background-color: white;
+  line-height: 1.6;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* App Container */
+.app {
+  min-height: 100vh;
+}
+
+/* Header */
+.header {
+  position: sticky;
+  top: 0;
+  background: white;
+  border-bottom: 1px solid var(--border);
+  z-index: 100;
+}
+
+.nav {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.25rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--primary);
+  cursor: pointer;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text);
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover {
+  color: var(--primary);
+}
+
+/* Sections */
+.section {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 5rem 2rem;
+}
+
+.section-title {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 3rem;
+  color: var(--primary);
+}
+
+/* Hero */
+.hero {
+  text-align: center;
+  padding: 8rem 2rem;
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+}
+
+.hero-tagline {
+  font-size: 1.25rem;
+  color: var(--primary);
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.hero-mission {
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 3rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cta-button {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.cta-button:hover {
+  background: #4a7aa8;
+  transform: translateY(-2px);
+}
+
+/* Hikes Section */
+.hikes-section {
+  padding-top: 8rem;
+  padding-bottom: 8rem;
+}
+
+.hikes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.hike-item {
+  padding: 1.25rem 0 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+  border-left: 4px solid var(--primary);
+}
+
+.hike-item:last-child {
+  border-bottom: none;
+}
+
+.hike-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.hike-name {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0;
+}
+
+.hike-meta {
+  display: flex;
+  gap: 2rem;
+  font-size: 0.95rem;
+  color: #666;
+  flex-wrap: wrap;
+}
+
+.hike-meta span {
+  display: inline-block;
+}
+
+.book-link {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 500;
+  border-bottom: 1px solid var(--primary);
+  transition: color 0.2s;
+  white-space: nowrap;
+  font-size: 0.95rem;
+}
+
+.book-link:hover {
+  color: #4a7aa8;
+}
+
+/* About Section */
+.about-section {
+  padding-top: 8rem;
+  padding-bottom: 8rem;
+}
+
+.about-subsection {
+  margin-bottom: 4rem;
+}
+
+.about-subsection h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--primary);
+}
+
+.about-subsection p {
+  margin-bottom: 1rem;
+  color: #444;
+  line-height: 1.8;
+}
+
+/* Testimonials */
+.testimonials {
+  margin: 2rem 0;
+  padding: 2rem 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.testimonial {
+  display: block;
+  margin-bottom: 2rem;
+  padding-left: 1.5rem;
+  border-left: 3px solid var(--accent);
+  color: #555;
+  font-style: italic;
+  line-height: 1.8;
+}
+
+.testimonial:last-child {
+  margin-bottom: 0;
+}
+
+.testimonial footer {
+  display: block;
+  margin-top: 0.5rem;
+  font-style: normal;
+  font-weight: 500;
+  color: #888;
+  font-size: 0.9rem;
+}
+
+/* Education List */
+.education-list {
+  list-style: none;
+  margin-left: 0;
+}
+
+.education-list li {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
+  line-height: 1.8;
+}
+
+.education-list li:last-child {
+  border-bottom: none;
+}
+
+/* Contact Section */
+.contact-section {
+  text-align: center;
+  padding-top: 8rem;
+  padding-bottom: 8rem;
+}
+
+.contact-message {
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+  color: #666;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+}
+
+.social-links a {
+  text-decoration: none;
+  color: var(--primary);
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.social-links a:hover {
+  color: #4a7aa8;
+}
+
+.consulting-note {
+  color: #888;
+  font-size: 0.95rem;
+}
+
+.consulting-note a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.consulting-note a:hover {
+  text-decoration: underline;
+}
+
+/* Footer */
+.footer {
+  border-top: 1px solid var(--border);
+  padding: 3rem 2rem;
+  text-align: center;
+  background: var(--light-bg);
+  color: #888;
+  font-size: 0.9rem;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .section {
+    padding: 3rem 1.5rem;
+  }
+
+  .hero {
+    padding: 4rem 1.5rem;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .hero-tagline {
+    font-size: 1rem;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  .nav {
+    padding: 1rem 1.5rem;
+  }
+
+  .nav-links {
+    gap: 1rem;
+    font-size: 0.85rem;
+  }
+
+  .hikes-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .social-links {
+    gap: 1rem;
+  }
+}
