@@ -22,7 +22,7 @@ const App: React.FC = () => {
       name: 'Camino Portugués',
       dates: 'Nov 2025',
       season: 'Autumn',
-      miles: 100,
+      miles: 62,
       color: '#F8811C'
     },
     {
