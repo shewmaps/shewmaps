@@ -109,14 +109,15 @@
 /* Book page visuals */
 .book-section {
   background-attachment: fixed;
-  background-size: cover;
+  background-size: 100% auto;
   background-position: center top;
+  background-repeat: no-repeat;
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-top: -72px;
-  padding-top: calc(3rem + 72px);
+  padding: calc(3rem + 72px) 2rem 3rem;
   will-change: opacity, mask-position, filter;
 }
 
@@ -197,4 +198,48 @@
 
 .buy-link:hover {
   transform: translateY(-2px);
+}
+
+/* Map page */
+.map-section {
+  margin-top: -72px;
+  padding-top: 72px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.map-header {
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 1rem;
+}
+
+.map-header h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--ds-text);
+}
+
+.map-container {
+  flex: 1;
+  min-height: 500px;
+  position: relative;
+}
+
+.map-container .leaflet-container {
+  position: absolute;
+  inset: 0;
+}
+
+/* About section link */
+.about-section .section-description a {
+  color: var(--ds-primary);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.about-section .section-description a:hover {
+  text-decoration: underline;
 }

@@ -7,12 +7,11 @@ interface Props {
   bg: string;
   title: string;
   summary: string;
-  onBack: () => void;
   buyUrl?: string;
   testimonials?: Testimonial[];
 }
 
-const BookPage: React.FC<Props> = ({ bg, title, summary, onBack, buyUrl, testimonials }) => {
+const BookPage: React.FC<Props> = ({ bg, title, summary, buyUrl, testimonials }) => {
   return (
     <section className="book-section" style={{ backgroundImage: `url("${bg}")` }} data-testid="bookPage">
       <div className="book-content ui-card">

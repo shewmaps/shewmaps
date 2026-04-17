@@ -5,8 +5,14 @@ export type Testimonial = {
   project: string;
 };
 
+export interface MapConfig {
+  center: [number, number];
+  zoom: number;
+}
+
 export interface Hike {
   id: string;
+  slug: string;
   name: string;
   bookTitle: string;
   dates: string;
@@ -16,10 +22,13 @@ export interface Hike {
   bookUrl?: string;
   color: string;
   testimonials?: Testimonial[];
-  readView?: string;
+  bookSummary?: string;
   buyPlaceholder?: boolean;
   buyLabel?: string;
+  mapConfig: MapConfig;
 }
+
+export const DUAL_PILGRIM_URL = 'https://dual-pilgrim.spiritual-pilgrimages.com/brandon-shewmake';
 
 export const shikokuSummary = `A temple bell strikes, its echo moving across the hillside and into an old forest. Cedars take on a deep green as the sun clears the ridge, and dew falls from fiddleheads onto the earth. You set a steady pace, thinking of temples and the towns where you'll rest for the night.
 
@@ -40,28 +49,29 @@ From Springer Mountain to Mount Katahdin, you think of Southern breakfasts in Bl
 export const hikes: Hike[] = [
   {
     id: 'kumano-kodo',
+    slug: 'kumano-kodo',
     name: 'Kumano Kodo',
     bookTitle: '',
     dates: 'Apr 2026',
     season: 'Spring',
     kilometers: 68,
     color: '#E87A90',
-    bookUrl: 'https://dual-pilgrim.spiritual-pilgrimages.com/brandon-shewmake',
-    buyLabel: 'Dual Pilgrim'
+    mapConfig: { center: [33.84, 135.77], zoom: 11 }
   },
   {
     id: 'camino-portugues',
+    slug: 'camino-portugues',
     name: 'Camino Portugués',
     bookTitle: '',
     dates: 'Nov 2025',
     season: 'Autumn',
     kilometers: 102,
     color: '#F8811C',
-    bookUrl: 'https://dual-pilgrim.spiritual-pilgrimages.com/brandon-shewmake',
-    buyLabel: 'Dual Pilgrim'
+    mapConfig: { center: [41.4, -8.3], zoom: 8 }
   },
   {
     id: 'shikoku-pilgrimage',
+    slug: 'shikoku-pilgrimage',
     name: 'Shikoku Pilgrimage',
     bookTitle: 'Walking to Dinner on the Shikoku Pilgrimage',
     dates: 'Apr–May 2024',
@@ -69,10 +79,12 @@ export const hikes: Hike[] = [
     kilometers: 1200,
     bookUrl: 'https://www.amazon.com/dp/B0GX2TGNZ1',
     color: '#E87A90',
-    readView: 'shikoku'
+    bookSummary: shikokuSummary,
+    mapConfig: { center: [33.75, 133.5], zoom: 9 }
   },
   {
     id: 'appalachian-trail',
+    slug: 'appalachian-trail',
     name: 'Appalachian Trail',
     bookTitle: 'Walking to Dinner on the Appalachian Trail',
     dates: 'Mar–Aug 2017',
@@ -80,7 +92,8 @@ export const hikes: Hike[] = [
     miles: 2190,
     bookUrl: 'https://www.amazon.com/dp/B0GXCM3GW1',
     color: '#98D983',
-    readView: 'at',
+    bookSummary: atSummary,
+    mapConfig: { center: [37.5, -79.5], zoom: 6 },
     testimonials: [
       {
         text: 'A refreshing and entertaining take on the AT hike.',
@@ -97,3 +110,7 @@ export const hikes: Hike[] = [
     ]
   }
 ];
+
+export function getHikeBySlug(slug: string): Hike | undefined {
+  return hikes.find(h => h.slug === slug);
+}
