@@ -8,6 +8,9 @@ export type Testimonial = {
 export interface MapConfig {
   center: [number, number];
   zoom: number;
+  minZoom: number;
+  maxZoom: number;
+  maxBounds: [[number, number], [number, number]];
 }
 
 export interface Hike {
@@ -30,21 +33,21 @@ export interface Hike {
 
 export const DUAL_PILGRIM_URL = 'https://dual-pilgrim.spiritual-pilgrimages.com/brandon-shewmake';
 
-export const shikokuSummary = `A temple bell strikes, its echo moving across the hillside and into an old forest. Cedars take on a deep green as the sun clears the ridge, and dew falls from fiddleheads onto the earth. You set a steady pace, thinking of temples and the towns where you'll rest for the night.
+export const shikokuSummary = `The gentle strike of a temple bell reverberates around a hillside and through an old forest, reaching your ears. Cedars glow golden green as the sun crests the horizon, and dew drips down fiddleheads onto undisturbed earth. You balance your pace, considering the temples and towns en route to your next accommodation.
 
-A stone statue, cracked and moss-clad, sits in a notch on the slope. Coins gather below; you add yours with a short prayer. An insect buzzes behind you through an air that holds the path in a hush. Your stomach tightens, and you wonder:
+A stone statue, cracked and overtaken by moss, sits tucked in a notch along the hillside. Coins of aluminum and copper rest below the statue, clinking when you toss your own into the pile with a prayer. An insect buzzes behind you, through the calm air that envelops the pilgrimage path. Your stomach rumbles, and then a question crosses your mind:
 
-What will I eat today?
+What will I have to eat today?
 
-From Ryōzenji to Ōkuboji, you imagine bamboo dishes in Tokushima, flame-seared bonito in Kochi, sea bream in Ehime, and udon in Kagawa. What dishes will appear within the pages of this Shikoku Pilgrimage journal?`;
+From Ryōzenji Temple to Ōkuboji Temple, you’ve daydreamed of bamboo-themed dishes in Tokushima Prefecture, flame-seared bonito fish in Kochi Prefecture, sea bream over rice in Ehime Prefecture, and hearty udon noodles in Kagawa Prefecture. What dishes will you discover within the pages of this Shikoku Pilgrimage journal?`;
 
-export const atSummary = `You hear a bird call from the stand of pines outside your tent. Cold air fills the sleeping bag; you draw your collar and curl for warmth. Outside, birds add their voices to morning; a white-throated sparrow gives a long note, then quick trills that move through the trees.
+export const atSummary = `With your eyes closed, you hear the soft chirp of a bird from the shadowed forest surrounding your tent. As your breathing pulls cold air into the empty spaces of your sleeping bag, you bury your head and curl into a ball for warmth. Outside, more birds join the crescendoing soundscape with their own melodies.
 
-A breeze lifts the tent; dawn finds the mountain silhouettes. Your stomach tightens, and you think:
+A white-throated sparrow whistles a single long note, followed by a flurry of higher-pitched notes, a melancholic tune that echoes among the conifers as a gentle breeze rustles your tent. By now, the air has warmed a little, so you peek outside to observe how dawn caresses the silhouetted mountains. Your stomach rumbles, and then a question crosses your mind:
 
-What will I eat today?
+What will I have to eat today?
 
-From Springer Mountain to Mount Katahdin, you think of Southern breakfasts in Blue Ridge towns, blackberry milkshakes in Shenandoah, delis along the mid-Atlantic, and wild blueberries in New England. What recipes will this Appalachian Trail journal record?`;
+From Springer Mountain, Georgia, to Mount Katahdin, Maine, you’ve daydreamed of Southern breakfasts in Blue Ridge towns, blackberry milkshakes in Shenandoah National Park, delis in the mid-Atlantic states, and wild blueberries in New England. What recipes will you discover within the pages of this Appalachian Trail journal?`;
 
 export const hikes: Hike[] = [
   {
@@ -56,7 +59,13 @@ export const hikes: Hike[] = [
     season: 'Spring',
     kilometers: 68,
     color: '#E87A90',
-    mapConfig: { center: [33.84, 135.77], zoom: 11 }
+    mapConfig: {
+      center: [33.84, 135.77],
+      zoom: 11,
+      minZoom: 10,
+      maxZoom: 15,
+      maxBounds: [[33.4, 135.0], [34.4, 136.5]]
+    }
   },
   {
     id: 'camino-portugues',
@@ -67,7 +76,13 @@ export const hikes: Hike[] = [
     season: 'Autumn',
     kilometers: 102,
     color: '#F8811C',
-    mapConfig: { center: [41.4, -8.3], zoom: 8 }
+    mapConfig: {
+      center: [42.0, -4.0],
+      zoom: 6,
+      minZoom: 5,
+      maxZoom: 15,
+      maxBounds: [[36.0, -12.0], [48.0, 5.0]]
+    }
   },
   {
     id: 'shikoku-pilgrimage',
@@ -80,7 +95,13 @@ export const hikes: Hike[] = [
     bookUrl: 'https://www.amazon.com/dp/B0GX2TGNZ1',
     color: '#E87A90',
     bookSummary: shikokuSummary,
-    mapConfig: { center: [33.75, 133.5], zoom: 9 }
+    mapConfig: {
+      center: [33.75, 133.5],
+      zoom: 9,
+      minZoom: 8,
+      maxZoom: 15,
+      maxBounds: [[32.5, 132.0], [35.0, 135.0]]
+    }
   },
   {
     id: 'appalachian-trail',
@@ -93,7 +114,13 @@ export const hikes: Hike[] = [
     bookUrl: 'https://www.amazon.com/dp/B0GXCM3GW1',
     color: '#98D983',
     bookSummary: atSummary,
-    mapConfig: { center: [37.5, -79.5], zoom: 6 },
+    mapConfig: {
+      center: [37.5, -79.5],
+      zoom: 6,
+      minZoom: 5,
+      maxZoom: 15,
+      maxBounds: [[24.0, -90.0], [48.0, -65.0]]
+    },
     testimonials: [
       {
         text: 'A refreshing and entertaining take on the AT hike.',

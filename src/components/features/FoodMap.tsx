@@ -1,5 +1,6 @@
 import React from 'react';
 import { MapContainer, TileLayer } from 'react-leaflet';
+import { LatLngBoundsExpression } from 'leaflet';
 import { MapConfig } from '../../data/hikes';
 
 interface Props {
@@ -17,6 +18,10 @@ const FoodMap: React.FC<Props> = ({ title, mapConfig }) => {
         <MapContainer
           center={mapConfig.center}
           zoom={mapConfig.zoom}
+          minZoom={mapConfig.minZoom}
+          maxZoom={mapConfig.maxZoom}
+          maxBounds={mapConfig.maxBounds as LatLngBoundsExpression}
+          maxBoundsViscosity={1.0}
           style={{ height: '100%', width: '100%' }}
           scrollWheelZoom={true}
         >

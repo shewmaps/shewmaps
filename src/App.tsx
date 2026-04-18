@@ -7,7 +7,6 @@ import PilgrimagesSection from './components/sections/PilgrimagesSection';
 import AboutSection from './components/sections/AboutSection';
 import Footer from './components/sections/Footer';
 import BookPageRoute from './components/features/BookPageRoute';
-import FoodMapRoute from './components/features/FoodMapRoute';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -34,7 +33,7 @@ const HomePage: React.FC = () => {
 
 const App: React.FC = () => {
   useEffect(() => {
-    document.title = 'Brandon Shewmake — Pilgrimages & Food';
+    document.title = 'Food Pilgrimages by Brandon Shewmake';
   }, []);
 
   return (
@@ -58,8 +57,7 @@ const App: React.FC = () => {
 
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/:slug/books" element={<BookPageRoute />} />
-        <Route path="/:slug/maps/food" element={<FoodMapRoute />} />
+        <Route path="/:slug/books/journal" element={<BookPageRoute />} />
       </Routes>
     </div>
   );

@@ -16,13 +16,13 @@ const HikeItem: React.FC<Props> = ({ hike }) => {
         <h3 className="hike-name">{hike.name}</h3>
         <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center' }}>
           {hasBook && (
-            <Link to={`/${hike.slug}/books`} className="ui-button ui-button--ghost" data-testid={`hikeItem-${hike.id}-readButton`}>
+            <Link to={`/${hike.slug}/books/journal`} className="ui-button ui-button--ghost" data-testid={`hikeItem-${hike.id}-readButton`}>
               Read
             </Link>
           )}
-          <Link to={`/${hike.slug}/maps/food`} className="ui-button ui-button--ghost" data-testid={`hikeItem-${hike.id}-mapButton`}>
-            Food Map
-          </Link>
+          <span className="ui-button ui-button--ghost" style={{ opacity: 0.5, cursor: 'default' }} data-testid={`hikeItem-${hike.id}-mapButton`}>
+            Food Map — Coming Soon
+          </span>
         </div>
       </div>
       <div className="hike-meta">

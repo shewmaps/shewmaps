@@ -9,9 +9,9 @@ const renderApp = () => render(
   </MemoryRouter>
 );
 
-test('renders hero section with author name', () => {
+test('renders hero section with site title', () => {
   renderApp();
-  expect(screen.getByRole('heading', { name: /Brandon Shewmake/i })).toBeInTheDocument();
+  expect(screen.getByRole('heading', { name: /Food Pilgrimages/i })).toBeInTheDocument();
 });
 
 test('renders navigation links', () => {

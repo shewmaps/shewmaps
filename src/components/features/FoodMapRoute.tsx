@@ -14,7 +14,10 @@ const FoodMapRoute: React.FC = () => {
 
   return (
     <>
-      <FoodMap title={hike.name} mapConfig={hike.mapConfig} />
+      <FoodMap
+        title={hike.name}
+        mapConfig={hike.mapConfig}
+      />
       <Footer />
     </>
   );
