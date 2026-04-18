@@ -1,68 +1,64 @@
-import React from 'react';
-import shikokuBg from './assets/shikoku no text.jpg';
-import atBg from './assets/at no text.jpg';
+import React, { useEffect } from 'react';
+import { Routes, Route, useLocation, Link } from 'react-router-dom';
 import './components/ui/ui.css';
-import { hikes, shikokuSummary, atSummary } from './data/hikes';
-import { useNavigation, ViewType } from './hooks/useNavigation';
+import { hikes } from './data/hikes';
 import HeroSection from './components/sections/HeroSection';
 import PilgrimagesSection from './components/sections/PilgrimagesSection';
-import ContactSection from './components/sections/ContactSection';
+import AboutSection from './components/sections/AboutSection';
 import Footer from './components/sections/Footer';
-import BookPage from './components/features/BookPage';
+import BookPageRoute from './components/features/BookPageRoute';
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+  }, [pathname]);
+  return null;
+}
+
+const HomePage: React.FC = () => {
+  const scrollToSection = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  return (
+    <main>
+      <HeroSection onExplore={() => scrollToSection('pilgrimages')} />
+      <PilgrimagesSection hikes={hikes} />
+      <AboutSection />
+      <Footer />
+    </main>
+  );
+};
 
 const App: React.FC = () => {
-  const { currentView, setCurrentView, scrollToSection, navigateToSection } = useNavigation();
-
-  const shikoku = hikes.find(h => h.id === 'shikoku-pilgrimage')!;
-  const at = hikes.find(h => h.id === 'appalachian-trail')!;
+  useEffect(() => {
+    document.title = 'Food Pilgrimages by Brandon Shewmake';
+  }, []);
 
   return (
     <div className="app">
+      <ScrollToTop />
       <header className="header">
         <nav className="nav">
-          <a href="#home" className="logo" onClick={() => navigateToSection('home')} data-testid="nav-logo">
+          <Link to="/" className="logo" data-testid="nav-logo">
             shewmaps
-          </a>
+          </Link>
           <div className="nav-links">
-            <a href="#pilgrimages" onClick={() => navigateToSection('pilgrimages')} data-testid="nav-pilgrimagesLink">
+            <Link to="/#pilgrimages" data-testid="nav-pilgrimagesLink">
               Pilgrimages
-            </a>
-            <a href="#contact" onClick={() => navigateToSection('contact')} data-testid="nav-contactLink">
-              Contact
-            </a>
+            </Link>
+            <Link to="/#about" data-testid="nav-aboutLink">
+              About
+            </Link>
           </div>
         </nav>
       </header>
 
-      {currentView === 'main' ? (
-        <main>
-          <HeroSection onExplore={() => scrollToSection('pilgrimages')} />
-          <PilgrimagesSection
-            hikes={hikes}
-            onRead={(readView) => setCurrentView((readView || 'main') as ViewType)}
-          />
-          <ContactSection />
-          <Footer />
-        </main>
-      ) : currentView === 'shikoku' ? (
-        <BookPage
-          bg={shikokuBg}
-          title={shikoku.bookTitle || 'Shikoku Pilgrimage'}
-          summary={shikokuSummary}
-          onBack={() => setCurrentView('main')}
-          buyUrl={shikoku.bookUrl}
-          testimonials={shikoku.testimonials}
-        />
-      ) : (
-        <BookPage
-          bg={atBg}
-          title={at.bookTitle || 'Appalachian Trail Journal'}
-          summary={atSummary}
-          onBack={() => setCurrentView('main')}
-          buyUrl={at.bookUrl}
-          testimonials={at.testimonials}
-        />
-      )}
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/:slug/books/journal" element={<BookPageRoute />} />
+      </Routes>
     </div>
   );
 };

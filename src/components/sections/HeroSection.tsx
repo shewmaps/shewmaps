@@ -6,9 +6,8 @@ interface Props {
 
 const HeroSection: React.FC<Props> = ({ onExplore }) => (
   <section id="home" className="section hero" data-testid="heroSection">
-    <h1 className="hero-title">Brandon Shewmake</h1>
-    <p className="hero-tagline">Thru-hiker &amp; Dual Pilgrim — pilgrimage and food writing</p>
-    <p className="hero-mission">I travel slowly by foot, mapping journeys and collecting stories and recipes from the places I pass.</p>
+    <h1 className="hero-title">Food Pilgrimages</h1>
+    <p className="hero-tagline">by Brandon Shewmake, a Dual Pilgrim and thru-hiker</p>
     <button
       className="cta-button"
       onClick={onExplore}

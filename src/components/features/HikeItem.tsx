@@ -1,27 +1,29 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import '../ui/ui.css';
-import BuyButton from '../ui/BuyButton';
-import ReadButton from '../ui/ReadButton';
 import { Hike } from '../../data/hikes';
 
 interface Props {
   hike: Hike;
-  onRead: (readView?: string) => void;
 }
 
-const HikeItem: React.FC<Props> = ({ hike, onRead }) => {
+const HikeItem: React.FC<Props> = ({ hike }) => {
+  const hasBook = !!hike.bookSummary;
+
   return (
     <div className="hike-item" style={{ borderLeftColor: hike.color }} data-testid={`hikeItem-${hike.id}`}>
       <div className="hike-header">
         <h3 className="hike-name">{hike.name}</h3>
-        {(hike.readView || hike.bookUrl || hike.buyPlaceholder) && (
-          <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center' }}>
-            {hike.readView && <ReadButton onClick={() => onRead(hike.readView)} data-testid={`hikeItem-${hike.id}-readButton`} />}
-            {hike.bookUrl || hike.buyPlaceholder ? (
-              <BuyButton href={hike.bookUrl} placeholder={!!hike.buyPlaceholder} data-testid={`hikeItem-${hike.id}-buyButton`}>{hike.buyLabel || 'Buy'}</BuyButton>
-            ) : null}
-          </div>
-        )}
+        <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center' }}>
+          {hasBook && (
+            <Link to={`/${hike.slug}/books/journal`} className="ui-button ui-button--ghost" data-testid={`hikeItem-${hike.id}-readButton`}>
+              Read
+            </Link>
+          )}
+          <span className="ui-button ui-button--ghost" style={{ opacity: 0.5, cursor: 'default' }} data-testid={`hikeItem-${hike.id}-mapButton`}>
+            Food Map — Coming Soon
+          </span>
+        </div>
       </div>
       <div className="hike-meta">
         {hike.kilometers && <span><strong>{hike.kilometers.toLocaleString()}</strong> kilometers</span>}

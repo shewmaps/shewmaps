@@ -211,24 +211,17 @@ code {
   font-size: 0.9rem;
 }
 
-/* Contact Section */
-.contact-section {
-  text-align: center;
-  padding-top: 8rem;
-  padding-bottom: 8rem;
-}
-
-.contact-message {
-  font-size: 1.25rem;
-  margin-bottom: 2rem;
-  color: #666;
+/* About Section */
+.about-section {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
 }
 
 .social-links {
   display: flex;
   justify-content: center;
   gap: 2rem;
-  margin-bottom: 3rem;
+  margin-bottom: 1.5rem;
   flex-wrap: wrap;
 }
 
@@ -246,7 +239,7 @@ code {
 /* Footer */
 .footer {
   border-top: 1px solid var(--ds-border);
-  padding: 3rem 2rem;
+  padding: 2rem 2rem;
   text-align: center;
   background: var(--ds-light-bg);
   color: #888;
