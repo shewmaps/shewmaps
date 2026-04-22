@@ -10,8 +10,20 @@ interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 
 const BuyButton: React.FC<Props> = ({ href, placeholder = false, children = 'Buy', ...rest }) => {
   if (href) {
+    // Track outbound click for Google Analytics
+    const handleClick = () => {
+      const gtag = (window as any).gtag;
+      if (typeof gtag === 'function') {
+        gtag('event', 'click_amazon_link', {
+          event_category: 'outbound',
+          event_label: href,
+          transport_type: 'beacon',
+        });
+      }
+    };
+
     return (
-      <Button href={href} variant="primary" target="_blank" rel="noopener noreferrer" {...(rest as any)}>
+      <Button href={href} variant="primary" target="_blank" rel="noopener noreferrer nofollow sponsored" onClick={handleClick} {...(rest as any)}>
         {children}
       </Button>
     );
