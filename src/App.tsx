@@ -16,6 +16,25 @@ function ScrollToTop() {
   return null;
 }
 
+function AnalyticsTracker() {
+  const location = useLocation();
+
+  useEffect(() => {
+    const gtag = (window as any).gtag;
+    if (typeof gtag !== 'function') {
+      return;
+    }
+
+    gtag('event', 'page_view', {
+      page_title: document.title,
+      page_location: window.location.href,
+      page_path: window.location.hash || `${location.pathname}${location.search}`,
+    });
+  }, [location.pathname, location.search, location.hash]);
+
+  return null;
+}
+
 const HomePage: React.FC = () => {
   const scrollToSection = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
@@ -39,6 +58,7 @@ const App: React.FC = () => {
   return (
     <div className="app">
       <ScrollToTop />
+      <AnalyticsTracker />
       <header className="header">
         <nav className="nav">
           <Link to="/" className="logo" data-testid="nav-logo">
