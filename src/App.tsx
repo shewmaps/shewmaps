@@ -6,7 +6,7 @@ import HeroSection from './components/sections/HeroSection';
 import PilgrimagesSection from './components/sections/PilgrimagesSection';
 import AboutSection from './components/sections/AboutSection';
 import Footer from './components/sections/Footer';
-import BookPageRoute from './components/features/BookPageRoute';
+import ReadRoute from './components/features/ReadRoute';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -87,7 +87,7 @@ const App: React.FC = () => {
 
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/:slug/books/journal" element={<BookPageRoute />} />
+        <Route path="/:location/read/:postSlug" element={<ReadRoute />} />
       </Routes>
     </div>
   );
