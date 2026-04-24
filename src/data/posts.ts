@@ -2,7 +2,7 @@ import { Testimonial } from './hikes';
 import shikokuWalkingToDinnerMd from '../locations/shikoku-pilgrimage/assets/posts/walking-to-dinner.md';
 import appalachianWalkingToDinnerMd from '../locations/appalachian-trail/assets/posts/walking-to-dinner.md';
 import kumanoWalkingToDinnerMd from '../locations/kumano-kodo-nakahechi/assets/posts/walking-to-dinner.md';
-import caminhoWalkingToDinnerMd from '../locations/caminho-portugues/assets/posts/walking-to-dinner.md';
+import caminoWalkingToDinnerMd from '../locations/camino-portugues/assets/posts/walking-to-dinner.md';
 import eireStrandhillMd from '../locations/eire/assets/posts/a-week-in-strandhill.md';
 
 export interface Post {
@@ -70,11 +70,11 @@ export const posts: Post[] = [
     contentPath: kumanoWalkingToDinnerMd,
   },
   {
-    location: 'caminho-portugues',
+    location: 'camino-portugues',
     slug: 'walking-to-dinner',
-    title: 'Walking to Dinner on the Caminho Português',
+    title: 'Walking to Dinner on the Camino Portugués',
     publishedDate: 'April 24, 2026',
-    contentPath: caminhoWalkingToDinnerMd,
+    contentPath: caminoWalkingToDinnerMd,
   },
   {
     location: 'eire',

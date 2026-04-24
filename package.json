@@ -13,8 +13,9 @@
     "@types/node": "^16.18.126",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
+    "entities": "^8.0.0",
     "leaflet": "^1.9.4",
-    "markdown-to-jsx": "^9.7.16",
+    "markdown-it": "^14.1.1",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "react-leaflet": "^5.0.0",
@@ -51,5 +52,8 @@
     "transformIgnorePatterns": [
       "node_modules/(?!(react-leaflet|@react-leaflet)/)"
     ]
+  },
+  "devDependencies": {
+    "@types/markdown-it": "^14.1.2"
   }
 }

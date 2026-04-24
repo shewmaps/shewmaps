@@ -63,9 +63,9 @@ export const hikes: Hike[] = [
     },
   },
   {
-    id: 'caminho-portugues',
-    slug: 'caminho-portugues',
-    name: 'Caminho Português',
+    id: 'camino-portugues',
+    slug: 'camino-portugues',
+    name: 'Camino Portugués',
     dates: 'Nov 2025',
     season: 'Autumn',
     kilometers: 102,
