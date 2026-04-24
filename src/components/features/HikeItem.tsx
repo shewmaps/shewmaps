@@ -8,15 +8,15 @@ interface Props {
 }
 
 const HikeItem: React.FC<Props> = ({ hike }) => {
-  const hasBook = !!hike.bookSummary;
+  const hasRead = !!hike.readSlug;
 
   return (
     <div className="hike-item" style={{ borderLeftColor: hike.color }} data-testid={`hikeItem-${hike.id}`}>
       <div className="hike-header">
         <h3 className="hike-name">{hike.name}</h3>
         <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center' }}>
-          {hasBook && (
-            <Link to={`/${hike.slug}/books/journal`} className="ui-button ui-button--ghost" data-testid={`hikeItem-${hike.id}-readButton`}>
+          {hasRead && (
+            <Link to={`/${hike.slug}/read/${hike.readSlug}`} className="ui-button ui-button--ghost" data-testid={`hikeItem-${hike.id}-readButton`}>
               Read
             </Link>
           )}

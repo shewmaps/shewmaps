@@ -1,25 +1,26 @@
 import React from 'react';
+import Markdown from 'markdown-to-jsx';
 import '../ui/ui.css';
 import BuyButton from '../ui/BuyButton';
 import { Testimonial } from '../../data/hikes';
 
 interface Props {
-  bg: string;
+  bg?: string;
   title: string;
+  publishedDate?: string;
   summary: string;
   buyUrl?: string;
   testimonials?: Testimonial[];
 }
 
-const BookPage: React.FC<Props> = ({ bg, title, summary, buyUrl, testimonials }) => {
+const BookPage: React.FC<Props> = ({ bg, title, publishedDate, summary, buyUrl, testimonials }) => {
   return (
-    <section className="book-section" style={{ backgroundImage: `url("${bg}")` }} data-testid="bookPage">
+    <section className="book-section" style={bg ? { backgroundImage: `url("${bg}")` } : {}} data-testid="bookPage">
       <div className="book-content ui-card">
         <h1>{title}</h1>
+        {publishedDate && <p className="post-date">{publishedDate}</p>}
         <div className="book-summary">
-          {summary.split('\n\n').map((paragraph, i) => (
-            <p key={i}>{paragraph}</p>
-          ))}
+          <Markdown>{summary}</Markdown>
         </div>
         <BuyButton href={buyUrl} placeholder={!buyUrl} data-testid="bookPage-buyButton">Buy on Amazon</BuyButton>
 

@@ -1,17 +1,18 @@
 {
   "files": {
-    "main.css": "/static/css/main.594611e3.css",
-    "main.js": "/static/js/main.3d5e141e.js",
+    "main.css": "/static/css/main.ea4bcc6e.css",
+    "main.js": "/static/js/main.916a90fe.js",
     "static/js/453.ee612a3c.chunk.js": "/static/js/453.ee612a3c.chunk.js",
-    "static/media/shikoku no text.jpg": "/static/media/shikoku no text.533dd7b46e5b87acbefc.jpg",
-    "static/media/at no text.jpg": "/static/media/at no text.cdf6d5820296151a7994.jpg",
+    "static/media/hero.jpg": "/static/media/hero.cdf6d5820296151a7994.jpg",
+    "static/media/walking-to-dinner.md": "/static/media/walking-to-dinner.9913eef4f8e4157fafa6.md",
     "index.html": "/index.html",
-    "main.594611e3.css.map": "/static/css/main.594611e3.css.map",
-    "main.3d5e141e.js.map": "/static/js/main.3d5e141e.js.map",
+    "static/media/a-week-in-strandhill.md": "/static/media/a-week-in-strandhill.4f9215690f3449f127ff.md",
+    "main.ea4bcc6e.css.map": "/static/css/main.ea4bcc6e.css.map",
+    "main.916a90fe.js.map": "/static/js/main.916a90fe.js.map",
     "453.ee612a3c.chunk.js.map": "/static/js/453.ee612a3c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.594611e3.css",
-    "static/js/main.3d5e141e.js"
+    "static/css/main.ea4bcc6e.css",
+    "static/js/main.916a90fe.js"
   ]
 }

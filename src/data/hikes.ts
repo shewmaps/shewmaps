@@ -17,18 +17,14 @@ export interface Hike {
   id: string;
   slug: string;
   name: string;
-  bookTitle: string;
   dates: string;
   season: string;
   kilometers?: number;
   miles?: number;
-  bookUrl?: string;
   color: string;
-  testimonials?: Testimonial[];
-  bookSummary?: string;
-  buyPlaceholder?: boolean;
-  buyLabel?: string;
   mapConfig: MapConfig;
+  /** Slug of the primary post for this hike, links the "Read" button in HikeItem */
+  readSlug?: string;
 }
 
 export const DUAL_PILGRIM_URL = 'https://dual-pilgrim.spiritual-pilgrimages.com/brandon-shewmake';
@@ -54,7 +50,6 @@ export const hikes: Hike[] = [
     id: 'kumano-kodo',
     slug: 'kumano-kodo',
     name: 'Kumano Kodo',
-    bookTitle: '',
     dates: 'Apr 2026',
     season: 'Spring',
     kilometers: 68,
@@ -64,78 +59,60 @@ export const hikes: Hike[] = [
       zoom: 11,
       minZoom: 10,
       maxZoom: 15,
-      maxBounds: [[33.4, 135.0], [34.4, 136.5]]
-    }
+      maxBounds: [[33.4, 135.0], [34.4, 136.5]],
+    },
   },
   {
-    id: 'camino-portugues',
-    slug: 'camino-portugues',
-    name: 'Camino Portugués',
-    bookTitle: '',
+    id: 'caminho-portugues',
+    slug: 'caminho-portugues',
+    name: 'Caminho Português',
     dates: 'Nov 2025',
     season: 'Autumn',
     kilometers: 102,
     color: '#F8811C',
+    readSlug: 'walking-to-dinner',
     mapConfig: {
       center: [42.0, -4.0],
       zoom: 6,
       minZoom: 5,
       maxZoom: 15,
-      maxBounds: [[36.0, -12.0], [48.0, 5.0]]
-    }
+      maxBounds: [[36.0, -12.0], [48.0, 5.0]],
+    },
   },
   {
     id: 'shikoku-pilgrimage',
     slug: 'shikoku-pilgrimage',
     name: 'Shikoku Pilgrimage',
-    bookTitle: 'Walking to Dinner on the Shikoku Pilgrimage',
     dates: 'Apr–May 2024',
     season: 'Spring',
     kilometers: 1200,
-    bookUrl: 'https://www.amazon.com/dp/B0GX2TGNZ1',
     color: '#E87A90',
-    bookSummary: shikokuSummary,
+    readSlug: 'walking-to-dinner',
     mapConfig: {
       center: [33.75, 133.5],
       zoom: 9,
       minZoom: 8,
       maxZoom: 15,
-      maxBounds: [[32.5, 132.0], [35.0, 135.0]]
-    }
+      maxBounds: [[32.5, 132.0], [35.0, 135.0]],
+    },
   },
   {
     id: 'appalachian-trail',
     slug: 'appalachian-trail',
     name: 'Appalachian Trail',
-    bookTitle: 'Walking to Dinner on the Appalachian Trail',
     dates: 'Mar–Aug 2017',
     season: 'Spring–Summer',
     miles: 2190,
-    bookUrl: 'https://www.amazon.com/dp/B0GXCM3GW1',
     color: '#98D983',
-    bookSummary: atSummary,
+    readSlug: 'walking-to-dinner',
     mapConfig: {
       center: [37.5, -79.5],
       zoom: 6,
       minZoom: 5,
       maxZoom: 15,
-      maxBounds: [[24.0, -90.0], [48.0, -65.0]]
+      maxBounds: [[24.0, -90.0], [48.0, -65.0]],
     },
-    testimonials: [
-      {
-        text: 'A refreshing and entertaining take on the AT hike.',
-        author: 'Jonathan',
-        date: 'May 2021',
-        project: 'Walking to Dinner on the Appalachian Trail'
-      },
-      {
-        text: 'There are several books out there about the AT but this one is such a unique perspective! Sméagol captures the beauty of everything from the places and the people to the food and the "must sees." I would suggest this book to anyone who is looking to hike the trail or even those that have hiked to recollect and remember just how incredible this adventure is!',
-        author: 'Jennifer',
-        date: 'Jan 2018',
-        project: 'Walking to Dinner on the Appalachian Trail'
-      }
-    ]
-  }
+  },
 ];
 
 export function getHikeBySlug(slug: string): Hike | undefined {

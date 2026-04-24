@@ -6,7 +6,7 @@ import HeroSection from './components/sections/HeroSection';
 import PilgrimagesSection from './components/sections/PilgrimagesSection';
 import AboutSection from './components/sections/AboutSection';
 import Footer from './components/sections/Footer';
-import BookPageRoute from './components/features/BookPageRoute';
+import ReadRoute from './components/features/ReadRoute';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -36,9 +36,19 @@ function AnalyticsTracker() {
 }
 
 const HomePage: React.FC = () => {
+  const location = useLocation();
+
   const scrollToSection = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
   };
+
+  useEffect(() => {
+    const section = new URLSearchParams(location.search).get('section');
+    if (section) {
+      // Wait for section content to render before scrolling.
+      requestAnimationFrame(() => scrollToSection(section));
+    }
+  }, [location.search]);
 
   return (
     <main>
@@ -65,10 +75,10 @@ const App: React.FC = () => {
             shewmaps
           </Link>
           <div className="nav-links">
-            <Link to="/#pilgrimages" data-testid="nav-pilgrimagesLink">
+            <Link to="/?section=pilgrimages" data-testid="nav-pilgrimagesLink">
               Pilgrimages
             </Link>
-            <Link to="/#about" data-testid="nav-aboutLink">
+            <Link to="/?section=about" data-testid="nav-aboutLink">
               About
             </Link>
           </div>
@@ -77,7 +87,7 @@ const App: React.FC = () => {
 
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/:slug/books/journal" element={<BookPageRoute />} />
+        <Route path="/:location/read/:postSlug" element={<ReadRoute />} />
       </Routes>
     </div>
   );
