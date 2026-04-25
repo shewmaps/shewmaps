@@ -14,6 +14,18 @@ const md = new MarkdownIt({
   typographer: true,
 });
 
+const defaultImageRender = md.renderer.rules.image;
+md.renderer.rules.image = (tokens, idx, options, env, self) => {
+  tokens[idx].attrJoin('class', 'polaroid-photo');
+  tokens[idx].attrSet('loading', 'lazy');
+
+  if (defaultImageRender) {
+    return defaultImageRender(tokens, idx, options, env, self);
+  }
+
+  return self.renderToken(tokens, idx, options);
+};
+
 const BlogPost: React.FC<Props> = ({ post, content }) => (
   <article className="blog-post" data-testid="blogPost">
     <div className="blog-post-content">
