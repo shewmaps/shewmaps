@@ -53,7 +53,7 @@
 }
 
 .ui-heading {
-  font-family: Petrona, serif;
+  font-family: Raleway, sans-serif;
   color: var(--ds-primary);
   font-weight: 700;
 }
@@ -86,13 +86,13 @@
 .logo {
   font-weight: 700;
   letter-spacing: 0.6px;
-  font-family: Petrona, serif;
+  font-family: Raleway, sans-serif;
   font-size: 1.35rem;
 }
 
 .nav-links a {
   margin-left: 1rem;
-  font-family: Petrona, serif;
+  font-family: Raleway, sans-serif;
   text-transform: lowercase;
   font-size: 1.35rem;
   line-height: 1;
@@ -150,7 +150,7 @@
 
 .book-summary {
   font-size: 1.05rem;
-  text-align: left;
+  text-align: justify;
   margin-bottom: 1.5rem;
   color: #222;
 }
@@ -209,7 +209,7 @@
 .acknowledgements h2 {
   margin: 0 0 0.65rem;
   font-size: 1.15rem;
-  font-family: Petrona, serif;
+  font-family: Raleway, sans-serif;
 }
 
 .acknowledgements ul {
@@ -277,13 +277,17 @@
 /* Blog post page */
 .blog-post {
   min-height: 100vh;
-  padding: calc(3rem + 72px) 2rem 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: -72px;
+  padding: calc(3rem + 72px) 2rem 3rem;
   background: var(--ds-light-bg);
 }
 
 .blog-post-content {
-  max-width: 720px;
-  margin: 0 auto;
+  max-width: 880px;
+  width: 100%;
 }
 
 .post-date {
@@ -293,24 +297,12 @@
   letter-spacing: 0.02em;
 }
 
-.blog-post-title {
-  font-family: Petrona, serif;
-  font-size: 2.2rem;
-  font-weight: 700;
-  color: #111;
-  margin-bottom: 2rem;
-  line-height: 1.25;
-  letter-spacing: 0.3px;
-}
-
 .blog-post-body {
-  font-size: 1.05rem;
-  color: #333;
-  line-height: 1.8;
+  line-height: inherit;
 }
 
 .blog-post-body p {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .blog-post-body p:last-child {
@@ -329,4 +321,55 @@
   border-right: 2px solid #ececec;
   border-bottom: 2px solid #ececec;
   box-shadow: none;
+}
+
+/* Post prev/next navigation */
+.post-nav {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 1.5rem 2rem 2rem;
+}
+
+.post-nav-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  border-top: 1px solid var(--ds-border);
+  padding-top: 1.25rem;
+}
+
+.post-nav-link {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  text-decoration: none;
+  padding: 0.75rem 1rem;
+  border-radius: var(--ds-radius-sm);
+  border: 1px solid var(--ds-border);
+  background: white;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.post-nav-link:hover {
+  border-color: var(--ds-primary);
+  box-shadow: 0 2px 8px rgba(91,141,190,0.12);
+}
+
+.post-nav-next {
+  text-align: right;
+}
+
+.post-nav-direction {
+  font-family: Raleway, sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ds-primary);
+}
+
+.post-nav-title {
+  font-size: 0.95rem;
+  color: var(--ds-text);
+  line-height: 1.35;
 }

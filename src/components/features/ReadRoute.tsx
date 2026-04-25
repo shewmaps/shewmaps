@@ -1,77 +1,41 @@
-import React, { useEffect, useState } from 'react';
-import { useParams, Navigate } from 'react-router-dom';
-import { getPost } from '../../data/posts';
+import React from 'react';
+import { getPost, getAdjacentPosts } from '../../data/posts';
 import BookPage from './BookPage';
 import BlogPost from './BlogPost';
 import Footer from '../sections/Footer';
+import PostNav from '../ui/PostNav';
+import { StaticImageData } from 'next/image';
 
 import shikokuBg from '../../locations/shikoku-pilgrimage/assets/images/hero.jpg';
 import atBg from '../../locations/appalachian-trail/assets/images/hero.jpg';
 
-const bgMap: Record<string, string> = {
+const bgMap: Record<string, string | StaticImageData> = {
   'shikoku-pilgrimage': shikokuBg,
   'appalachian-trail': atBg,
 };
 
-const ReadRoute: React.FC = () => {
-  const { location, postSlug } = useParams<{ location: string; postSlug: string }>();
-  const post = location && postSlug ? getPost(location, postSlug) : undefined;
-  const [content, setContent] = useState<string>('');
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+const mdxComponents = {
+  // eslint-disable-next-line @next/next/no-img-element
+  img: (props: React.ImgHTMLAttributes<HTMLImageElement>) => (
+    <img {...props} className="polaroid-photo" loading="lazy" alt={props.alt ?? ''} />
+  ),
+};
 
-  useEffect(() => {
-    if (!post) {
-      setContent('');
-      setIsLoading(false);
-      return;
-    }
+interface Props {
+  location: string;
+  postSlug: string;
+}
 
-    let cancelled = false;
-    setIsLoading(true);
+const ReadRoute: React.FC<Props> = ({ location, postSlug }) => {
+  const post = getPost(location, postSlug);
+  const { prev, next } = getAdjacentPosts(location, postSlug);
 
-    fetch(post.contentPath)
-      .then(response => {
-        if (!response.ok) {
-          throw new Error(`Unable to load content: ${response.status}`);
-        }
-        return response.text();
-      })
-      .then(text => {
-        if (!cancelled) {
-          let nextContent = text.trim();
+  if (!post) return null;
 
-          if (post.assetMap) {
-            Object.entries(post.assetMap).forEach(([assetName, assetUrl]) => {
-              nextContent = nextContent.split(assetName).join(assetUrl);
-            });
-          }
-
-          setContent(nextContent);
-        }
-      })
-      .catch(() => {
-        if (!cancelled) {
-          setContent('Content coming soon.');
-        }
-      })
-      .finally(() => {
-        if (!cancelled) {
-          setIsLoading(false);
-        }
-      });
-
-    return () => {
-      cancelled = true;
-    };
-  }, [post]);
-
-  if (!post) {
-    return <Navigate to="/" replace />;
-  }
-
-  const bg = bgMap[post.location] || '';
+  const mappedBg = bgMap[post.location];
+  const bg = typeof mappedBg === 'string' ? mappedBg : mappedBg?.src || '';
   const isBook = !!post.buyUrl;
-  const renderedContent = isLoading ? 'Loading content...' : content;
+  const Content = post.Content;
 
   return (
     <>
@@ -80,14 +44,18 @@ const ReadRoute: React.FC = () => {
           bg={bg}
           title={post.title}
           publishedDate={post.publishedDate}
-          summary={renderedContent}
           buyUrl={post.buyUrl}
           acknowledgements={post.acknowledgements}
           testimonials={post.testimonials}
-        />
+        >
+          <Content components={mdxComponents} />
+        </BookPage>
       ) : (
-        <BlogPost post={post} content={renderedContent} />
+        <BlogPost post={post}>
+          <Content components={mdxComponents} />
+        </BlogPost>
       )}
+      <PostNav prev={prev} next={next} />
       <Footer />
     </>
   );
