@@ -3,6 +3,7 @@ import MarkdownIt from 'markdown-it';
 import '../ui/ui.css';
 import BuyButton from '../ui/BuyButton';
 import { Testimonial } from '../../data/hikes';
+import { Acknowledgement } from '../../data/posts';
 
 interface Props {
   bg?: string;
@@ -10,6 +11,7 @@ interface Props {
   publishedDate?: string;
   summary: string;
   buyUrl?: string;
+  acknowledgements?: Acknowledgement[];
   testimonials?: Testimonial[];
 }
 
@@ -19,7 +21,7 @@ const md = new MarkdownIt({
   typographer: true,
 });
 
-const BookPage: React.FC<Props> = ({ bg, title, publishedDate, summary, buyUrl, testimonials }) => {
+const BookPage: React.FC<Props> = ({ bg, title, publishedDate, summary, buyUrl, acknowledgements, testimonials }) => {
   return (
     <section className="book-section" style={bg ? { backgroundImage: `url("${bg}")` } : {}} data-testid="bookPage">
       <div className="book-content ui-card">
@@ -27,6 +29,22 @@ const BookPage: React.FC<Props> = ({ bg, title, publishedDate, summary, buyUrl, 
         {publishedDate && <p className="post-date">{publishedDate}</p>}
         <div className="book-summary" dangerouslySetInnerHTML={{ __html: md.render(summary) }} />
         <BuyButton href={buyUrl} placeholder={!buyUrl} data-testid="bookPage-buyButton">Buy on Amazon</BuyButton>
+
+        {acknowledgements && acknowledgements.length > 0 && (
+          <section className="acknowledgements" data-testid="bookPage-acknowledgements">
+            <h2>Acknowledgements</h2>
+            <ul>
+              {acknowledgements.map((entry, i) => (
+                <li key={i}>
+                  <strong>{entry.role}:</strong>{' '}
+                  <a href={entry.url} target="_blank" rel="noopener noreferrer">
+                    {entry.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
 
         {testimonials && testimonials.length > 0 && (
           <div className="testimonials" style={{ marginTop: '1.75rem' }}>

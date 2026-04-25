@@ -200,6 +200,36 @@
   transform: translateY(-2px);
 }
 
+.acknowledgements {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.acknowledgements h2 {
+  margin: 0 0 0.65rem;
+  font-size: 1.15rem;
+  font-family: Petrona, serif;
+}
+
+.acknowledgements ul {
+  margin: 0;
+  padding-left: 1.1rem;
+}
+
+.acknowledgements li {
+  margin-bottom: 0.45rem;
+}
+
+.acknowledgements a {
+  color: var(--ds-primary);
+  text-decoration: none;
+}
+
+.acknowledgements a:hover {
+  text-decoration: underline;
+}
+
 /* Map page */
 .map-section {
   margin-top: -72px;

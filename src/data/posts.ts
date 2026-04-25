@@ -5,6 +5,12 @@ import kumanoWalkingToDinnerMd from '../locations/kumano-kodo-nakahechi/assets/p
 import caminoWalkingToDinnerMd from '../locations/camino-portugues/assets/posts/walking-to-dinner.md';
 import eireStrandhillMd from '../locations/eire/assets/posts/a-week-in-strandhill.md';
 
+export interface Acknowledgement {
+  role: string;
+  name: string;
+  url: string;
+}
+
 export interface Post {
   /** Matches a hike slug or any standalone location string, e.g. 'eire' */
   location: string;
@@ -18,6 +24,7 @@ export interface Post {
   contentPath: string;
   /** Present = book post with Amazon buy button; absent = blog post */
   buyUrl?: string;
+  acknowledgements?: Acknowledgement[];
   testimonials?: Testimonial[];
 }
 
@@ -38,6 +45,18 @@ export const posts: Post[] = [
     publishedDate: 'April 22, 2026',
     contentPath: shikokuWalkingToDinnerMd,
     buyUrl: 'https://www.amazon.com/dp/B0GX2TGNZ1',
+    acknowledgements: [
+      {
+        role: 'Editor',
+        name: 'Jennifer Kepler',
+        url: 'https://cypressediting.com/',
+      },
+      {
+        role: 'Cover Design',
+        name: 'Andrew Yong',
+        url: 'https://www.jonadrew.com/',
+      },
+    ],
   },
   {
     location: 'appalachian-trail',
@@ -46,6 +65,18 @@ export const posts: Post[] = [
     publishedDate: 'Jan 3, 2018',
     contentPath: appalachianWalkingToDinnerMd,
     buyUrl: 'https://www.amazon.com/dp/B0GXCM3GW1',
+    acknowledgements: [
+      {
+        role: 'Editor',
+        name: 'Jennifer Kepler',
+        url: 'https://cypressediting.com/',
+      },
+      {
+        role: 'Cover Design',
+        name: 'Andrew Yong',
+        url: 'https://www.jonadrew.com/',
+      },
+    ],
     testimonials: [
       {
         text: 'A refreshing and entertaining take on the AT hike.',

@@ -74,6 +74,7 @@ const ReadRoute: React.FC = () => {
           publishedDate={post.publishedDate}
           summary={renderedContent}
           buyUrl={post.buyUrl}
+          acknowledgements={post.acknowledgements}
           testimonials={post.testimonials}
         />
       ) : (
