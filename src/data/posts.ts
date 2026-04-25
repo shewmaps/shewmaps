@@ -98,6 +98,7 @@ export const posts: Post[] = [
     location: 'kumano-kodo',
     slug: 'walking-to-dinner',
     title: 'Walking to Dinner on the Kumano Kodo',
+    publishedDate: 'April 25, 2026',
     contentPath: kumanoWalkingToDinnerMd,
   },
   {
