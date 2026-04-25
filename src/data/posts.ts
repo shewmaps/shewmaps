@@ -4,6 +4,8 @@ import appalachianWalkingToDinnerMd from '../locations/appalachian-trail/assets/
 import kumanoWalkingToDinnerMd from '../locations/kumano-kodo-nakahechi/assets/posts/walking-to-dinner.md';
 import caminoWalkingToDinnerMd from '../locations/camino-portugues/assets/posts/walking-to-dinner.md';
 import eireStrandhillMd from '../locations/eire/assets/posts/a-week-in-strandhill.md';
+import kumanoSnapshotJpeg from '../locations/kumano-kodo-nakahechi/assets/images/kumano-kodo-snapshot.jpeg';
+import caminoSnapshotJpeg from '../locations/camino-portugues/assets/images/camino-portugues-snapshot.jpeg';
 
 export interface Acknowledgement {
   role: string;
@@ -22,6 +24,8 @@ export interface Post {
   publishedDate?: string;
   /** Built asset URL pointing to the markdown body */
   contentPath: string;
+  /** Optional mapping for markdown-referenced local asset names to bundled URLs */
+  assetMap?: Record<string, string>;
   /** Present = book post with Amazon buy button; absent = blog post */
   buyUrl?: string;
   acknowledgements?: Acknowledgement[];
@@ -100,6 +104,9 @@ export const posts: Post[] = [
     title: 'Walking to Dinner on the Kumano Kodo',
     publishedDate: 'April 25, 2026',
     contentPath: kumanoWalkingToDinnerMd,
+    assetMap: {
+      'kumano-kodo-snapshot.jpeg': kumanoSnapshotJpeg,
+    },
   },
   {
     location: 'camino-portugues',
@@ -107,6 +114,9 @@ export const posts: Post[] = [
     title: 'Walking to Dinner on the Camino Portugués',
     publishedDate: 'April 24, 2026',
     contentPath: caminoWalkingToDinnerMd,
+    assetMap: {
+      'camino-portugues-snapshot.jpeg': caminoSnapshotJpeg,
+    },
   },
   {
     location: 'eire',

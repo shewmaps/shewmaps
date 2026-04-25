@@ -21,6 +21,18 @@ const md = new MarkdownIt({
   typographer: true,
 });
 
+const defaultImageRender = md.renderer.rules.image;
+md.renderer.rules.image = (tokens, idx, options, env, self) => {
+  tokens[idx].attrJoin('class', 'polaroid-photo');
+  tokens[idx].attrSet('loading', 'lazy');
+
+  if (defaultImageRender) {
+    return defaultImageRender(tokens, idx, options, env, self);
+  }
+
+  return self.renderToken(tokens, idx, options);
+};
+
 const BookPage: React.FC<Props> = ({ bg, title, publishedDate, summary, buyUrl, acknowledgements, testimonials }) => {
   return (
     <section className="book-section" style={bg ? { backgroundImage: `url("${bg}")` } : {}} data-testid="bookPage">

@@ -38,7 +38,15 @@ const ReadRoute: React.FC = () => {
       })
       .then(text => {
         if (!cancelled) {
-          setContent(text.trim());
+          let nextContent = text.trim();
+
+          if (post.assetMap) {
+            Object.entries(post.assetMap).forEach(([assetName, assetUrl]) => {
+              nextContent = nextContent.split(assetName).join(assetUrl);
+            });
+          }
+
+          setContent(nextContent);
         }
       })
       .catch(() => {
