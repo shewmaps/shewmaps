@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import './ui.css';
 import Button from './Button';

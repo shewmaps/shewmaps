@@ -1,5 +1,4 @@
 import React from 'react';
-import MarkdownIt from 'markdown-it';
 import '../ui/ui.css';
 import BuyButton from '../ui/BuyButton';
 import { Testimonial } from '../../data/hikes';
@@ -9,37 +8,19 @@ interface Props {
   bg?: string;
   title: string;
   publishedDate?: string;
-  summary: string;
+  children: React.ReactNode;
   buyUrl?: string;
   acknowledgements?: Acknowledgement[];
   testimonials?: Testimonial[];
 }
 
-const md = new MarkdownIt({
-  html: false,
-  linkify: true,
-  typographer: true,
-});
-
-const defaultImageRender = md.renderer.rules.image;
-md.renderer.rules.image = (tokens, idx, options, env, self) => {
-  tokens[idx].attrJoin('class', 'polaroid-photo');
-  tokens[idx].attrSet('loading', 'lazy');
-
-  if (defaultImageRender) {
-    return defaultImageRender(tokens, idx, options, env, self);
-  }
-
-  return self.renderToken(tokens, idx, options);
-};
-
-const BookPage: React.FC<Props> = ({ bg, title, publishedDate, summary, buyUrl, acknowledgements, testimonials }) => {
+const BookPage: React.FC<Props> = ({ bg, title, publishedDate, children, buyUrl, acknowledgements, testimonials }) => {
   return (
     <section className="book-section" style={bg ? { backgroundImage: `url("${bg}")` } : {}} data-testid="bookPage">
       <div className="book-content ui-card">
         <h1>{title}</h1>
         {publishedDate && <p className="post-date">{publishedDate}</p>}
-        <div className="book-summary" dangerouslySetInnerHTML={{ __html: md.render(summary) }} />
+        <div className="book-summary">{children}</div>
         <BuyButton href={buyUrl} placeholder={!buyUrl} data-testid="bookPage-buyButton">Buy on Amazon</BuyButton>
 
         {acknowledgements && acknowledgements.length > 0 && (

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import '../ui/ui.css';
 import { Hike } from '../../data/hikes';
 
@@ -16,7 +16,7 @@ const HikeItem: React.FC<Props> = ({ hike }) => {
         <h3 className="hike-name">{hike.name}</h3>
         <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center' }}>
           {hasRead && (
-            <Link to={`/${hike.slug}/read/${hike.readSlug}`} className="ui-button ui-button--ghost" data-testid={`hikeItem-${hike.id}-readButton`}>
+            <Link href={`/${hike.slug}/read/${hike.readSlug}`} className="ui-button ui-button--ghost" data-testid={`hikeItem-${hike.id}-readButton`}>
               Read
             </Link>
           )}
