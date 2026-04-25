@@ -54,6 +54,7 @@ export const hikes: Hike[] = [
     season: 'Spring',
     kilometers: 68,
     color: '#E87A90',
+    readSlug: 'walking-to-dinner',
     mapConfig: {
       center: [33.84, 135.77],
       zoom: 11,

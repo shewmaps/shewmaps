@@ -1,18 +1,18 @@
 {
   "files": {
     "main.css": "/static/css/main.d07a568d.css",
-    "main.js": "/static/js/main.e92c6194.js",
+    "main.js": "/static/js/main.c0a2b081.js",
     "static/js/453.ee612a3c.chunk.js": "/static/js/453.ee612a3c.chunk.js",
     "static/media/hero.jpg": "/static/media/hero.cdf6d5820296151a7994.jpg",
-    "static/media/walking-to-dinner.md": "/static/media/walking-to-dinner.4564661439b4a34709b8.md",
+    "static/media/walking-to-dinner.md": "/static/media/walking-to-dinner.bb84f5ed837ef4273f01.md",
     "index.html": "/index.html",
     "static/media/a-week-in-strandhill.md": "/static/media/a-week-in-strandhill.4f9215690f3449f127ff.md",
     "main.d07a568d.css.map": "/static/css/main.d07a568d.css.map",
-    "main.e92c6194.js.map": "/static/js/main.e92c6194.js.map",
+    "main.c0a2b081.js.map": "/static/js/main.c0a2b081.js.map",
     "453.ee612a3c.chunk.js.map": "/static/js/453.ee612a3c.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.d07a568d.css",
-    "static/js/main.e92c6194.js"
+    "static/js/main.c0a2b081.js"
   ]
 }
