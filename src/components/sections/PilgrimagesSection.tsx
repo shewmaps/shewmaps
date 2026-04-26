@@ -1,6 +1,7 @@
 import React from 'react';
 import { Hike } from '../../data/hikes';
 import HikeItem from '../features/HikeItem';
+import fishImg from '../../assets/images/fish.png';
 
 interface Props {
   hikes: Hike[];
@@ -14,6 +15,8 @@ const PilgrimagesSection: React.FC<Props> = ({ hikes }) => (
         <HikeItem key={hike.id} hike={hike} />
       ))}
     </div>
+    {/* eslint-disable-next-line @next/next/no-img-element */}
+    <img src={fishImg.src} alt="" className="section-emblem" aria-hidden="true" />
   </section>
 );
 
